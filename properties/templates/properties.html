@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}
+{{ property.street.title }}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    
+    <div class="standardContent">
+        <div class="row">
+            <div class="col-md">
+                <img src="https://irvjau-realestate.s3-us-west-1.amazonaws.com/sample-homes/{{ property.street.title|cut:" " }}.jpg"
+                    style="height: 400px; width:600px;"/>
+            </div>
+            <div class="col-md">
+                <h1>{{ property.street.title }}</h1>
+                <h3>{{ property.city.title }}, {{ property.state.title }} {{ property.zip }}</h3>
+                <h4>{{ property.beds }} beds - {{ property.baths }} bath - {{ property.sq_ft }} sqft</h4>
+                <div class=marketValue>
+                    {% if property.price < 70000 %}
+                    <p style="color:rgb(24, 168, 101);">Bellow market value </p>
+                    {% endif%}
+                    {% if property.price > 100000 %}
+                    <p style="color:rgb(156, 33, 16);">Far above market value </p>  
+                    {% endif%}
+                </div>
+            </div>
+        </div>
+
+        <div>
+            
+        </div>
+        
+    </div>
+</div>
+
+
+{% endblock %}
