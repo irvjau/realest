@@ -1,0 +1,124 @@
+<html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>{% block title%} Replace this value {% endblock %}</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <div class="containerHome">
+      <div id="mainHeader">
+        <div class="menu">
+          <div class="row">
+              <div class='col-4 mx-auto'>
+                  <ul>
+                      <li><a href="/">Home</a></li> 
+                      <li><a href="/buy/">Buy</a></li> 
+                      <li><a href="/sell/">Sell</a></li>
+                      <li><a href="https://www.google.com/search?hl=en&source=hp&ei=Xd03Xcb5OZPS-
+                        gSlmK3QDA&q=calculator&oq=calcul&gs_l=psy-ab.3.0.0i20i263j0i131i67j0i67l3j0l2j0i67j0l2.912.1697..
+                        3338...0.0..1.302.984.4j1j1j1......0....1..gws-wiz.....0..35i39j0i131.QCMMGiyeUoQ"
+                         target="_blank">Calculator</a></li>
+                    </ul>
+              </div>
+
+              <div class='col-4 mx-auto'>
+                <ul>
+                    <!-- <li class="logo"><img src="static/logo2.jpg"></li> -->
+                    {% load staticfiles %}
+                    <li class="logo"><img src="{% static "logo.png" %}"/></li>
+                </ul>
+              </div>
+
+              
+              <div class='col-4 mx-auto'>
+                {% ifnotequal user.is_authenticated True %}     <!--  -->
+                <ul>
+                  <li><a href="/login/" class="login-btn"><span>Login</span></a></li>
+                  <li><a href="/signup/" class="signup-btn"><span>Sign Up</span></a></li>
+                </ul>
+
+                {% else %}
+                  <div class="home-userName">
+                      <ul>
+                          <div class="dropdown show">
+                              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Welcome back, {{ user.username|capfirst  }}
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="#">Profile</a>
+                                <!-- <a class="dropdown-item" href="#">Another action</a> -->
+                                <a class="dropdown-item" href="/logout/">Sign Out</a>
+                              </div>
+                            </div>
+                          <!-- <li>Welcome back, {{ user.username|capfirst  }}</li> -->
+                        </ul>
+                  </div>
+                  
+                {% endifnotequal %}
+              
+              
+
+              </div>
+          </div>
+            
+        </div>
+      </div>
+
+
+      <div id="content">
+          {% block content %} Replace this value  {% endblock %}
+      </div>
+
+      
+
+    </div>
+
+    <div id="footer">
+        <div class='col-6 mx-auto'>
+            <div class="container">
+                <div class="row">
+                  <div class="col-sm">
+                    <a href="/about/">About</a>
+                  </div>
+                  <div class="col-sm">
+                    <a href="/contact/">Contact</a>
+                  </div>
+                  <div class="col-sm">
+                    <a href="https://google.com" target="_blank">Our Sponsors</a> 
+                  </div>
+                  <div class="col-sm">
+                      <a href="/">Riggs International</a>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm 12">
+                      <h6>All rights reserved</h6>
+                    <h6>Copyright &copy; Riggs International</h6>
+                    </div>
+                    
+                </div>
+                
+        
+                <br>
+              </div>
+        </div>
+      </div>  
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+  </body>
+
+  
+</html>

@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="buyContent">
+        <h1 style="color:whitesmoke">Buy a home</h1>
+        <h3>Check out our listings to find cheap houses in your neighborhood</h3>
+        <br>
+
+        <!-- <form class="form-inline my-2 my-lg-1">
+            <input 
+                class="form-control mr-sm-2" 
+                type="search" placeholder="Search" 
+                aria-label="Search"
+                name="search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form> -->
+
+        <form method="GET">
+            <input type="text" name="q" placeholder="Search" value="{{ request.GET.q }}">
+
+            <input type="submit" value="Search">
+        </form>
+        
+
+        <br>
+        
+        <div class="propertyContent">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                
+                    </div>
+                    <div class="col-sm">
+                        <h2>Address</h2>
+                    </div>
+                    <div class="col-sm">
+                        <h2>City</h2>
+                    </div>
+                    <div class="col-sm">
+                        <h2>Price</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        {% for property in properties %}
+            <div class="propertyContent">
+                <div class="container" >
+                    <div class="row" style="height: 200px;">
+                        <div class="col-sm">                                
+                            <div class="houseImage">
+                                    <a href="prop/{{property.slug}}">
+                                        <img src="https://irvjau-realestate.s3-us-west-1.amazonaws.com/sample-homes/{{ property.street.title|cut:" " }}.jpg"
+                                        style="height: 175px; width:200px;"/>
+                                    </a>
+
+                                <!-- <img src="https://irvjau-realestate.s3-us-west-1.amazonaws.com/sample-homes/{{ property.street.title|cut:" " }}.jpg"
+                                style="height: 175px; width:200px;"/> -->
+                            </div>   
+                                                            
+                        </div>
+                        <div class="col-sm">
+                            <p>{{property.street.title}}</p>
+                        </div>
+                        <div class="col-sm">
+                            {{property.city.title}}
+                        </div>
+                        <div class="col-sm">
+                            <!-- ${{property.price}} -->
+                            ${{property.price|intcomma}} <br>
+                            <div class=marketValue>
+                                {% if property.price < 70000 %}
+                                <p style="color:rgb(24, 168, 101);">Bellow market value </p>
+                                {% endif%}
+                                {% if property.price > 100000 %}
+                                <p style="color:rgb(156, 33, 16);">Far above market value </p>  
+                                {% endif%}
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+
+        <div class="pagination">
+                <span class="step-links">
+                    {% if properties.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ properties.previous_page_number }}">previous</a>
+                    {% endif %}
+            
+                    <span class="current">
+                        Page {{ properties.number }} of {{ properties.paginator.num_pages }}.
+                    </span>
+            
+                    {% if properties.has_next %}
+                        <a href="?page={{ properties.next_page_number }}"> next</a>
+                        <a href="?page={{ properties.paginator.num_pages }}"> last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+       
+    </div>
+    
+</div>
+
+
+{% endblock %}

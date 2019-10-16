@@ -1,0 +1,31 @@
+{%extends "base.html" %}
+
+{% block title %}
+Contact Us
+{% endblock %}
+
+{% block content%}
+<h4>Feel free to use this page to give us your feed back, or just to talk smack
+    about Rolo
+</h4>
+<br>
+<form action=""method="POST">
+    <label> First Name</label>
+    <input type="text" name="firstName" placeholder="enter first name">
+</form>
+
+<form action=""method="POST">
+    <label> Last Name</label>
+    <input type="text" name="firstName" placeholder="enter last name">
+</form>
+
+<p>Message:</p>
+<form action="">
+    <label></label>
+    <textarea name="message" >
+    </textarea>
+</form>
+<div>
+    <input type="Submit" name="Submit" value="Submit">
+</div>
+{% endblock %}

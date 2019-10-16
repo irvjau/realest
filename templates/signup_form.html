@@ -1,0 +1,68 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+  Sign Up
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-4 mx-auto">
+                <h2>Connect and see listings across multiple markets</h2>
+                <br><br>
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fa fa-home" style="font-size:48px;"></i>
+                    </div>
+                    <div class="col-9">
+                            <h5>Get in contact with home owners</h5>
+                    </div>
+                </div>
+
+                <br><br>
+
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fa fa-building-o" style="font-size:48px;" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-9">
+                        <h5>Search locations near and far</h5>
+                    </div>
+                </div>
+
+                <br><br>
+
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fa fa-globe" style="font-size:48px;" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-9">
+                        <h5>Learn about the complex global economy</h5>
+                    </div>
+                </div>
+
+
+
+        </div>
+    
+        <div class="col-6 mx-auto">
+            <h1>Sign up! </h1>
+            <p>You'll be glad you did.</p>
+            <br>
+            <div>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Sign up</button>
+                </form>
+            </div>        
+        </div>
+    </div>
+    
+    
+</div>
+
+
+{% endblock %}
